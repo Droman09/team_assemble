@@ -27,11 +27,9 @@ function employeeInfo() {
                  return managerInfo();
             } else if (data.position === "Engineer") {
                 return engineerInfo();
-            } else if (data.position === "Intern") {
-                return internInfo()
             } else {
-                console.log("please select one")
-            } ///refactor this 
+                return internInfo()
+            } 
         })
         
 }
@@ -64,7 +62,9 @@ function managerInfo() {
         ])
         .then(data =>{ var newManager = new Manager(data.name, data.id, data.email, data.officeNumber);
             employeeArr.push(newManager);
+            console.log(`Welcome ${data.name}!`)
             console.log(employeeArr)
+            addNew()
         })
         
 }
@@ -94,7 +94,9 @@ function engineerInfo() {
             }
         ]).then(data =>{ var newEngineer = new Engineer(data.name, data.id, data.email, data.github);
             employeeArr.push(newEngineer);
-            console.log(newEngineer)
+            console.log(`Welcome ${data.name}!`)
+            console.log(employeeArr)
+            addNew()
         })
 }
 
@@ -123,7 +125,9 @@ function internInfo() {
             }
         ]).then(data =>{ var newIntern = new Intern(data.name, data.id, data.email, data.school);
             employeeArr.push(newIntern);
-            console.log(newIntern)
+            console.log(`Welcome ${data.name}!`)
+            console.log(employeeArr)
+            addNew()
         })
 }
 
@@ -136,33 +140,9 @@ function addNew(){
             message: "Add another employee?"
         } 
     ]).then(data =>{ 
-            if (data.choice){
-                this.employeeInfo()
-            } else {
-                console.log("Success")
+            data.choice ? employeeInfo() : fs.writeFileSync(outputPath, render(employeeArr), "utf-8")
             }
-    })
+    )
 }
 
 employeeInfo()
-
-
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-
