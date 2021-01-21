@@ -139,7 +139,7 @@ function addNew(){
             if (data.choice){
                 this.employeeInfo()
             } else {
-                console.log("avenger assemble!!")
+                console.log("Success")
             }
     })
 }
