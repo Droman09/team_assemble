@@ -16,7 +16,7 @@ You will build a software engineering team generator command line application. T
 There is a `package.json`, so make sure to `npm install`.
 
 # Usage
-
+![GIF](team_template.gif) 
 
 # Technologies
     HTML
