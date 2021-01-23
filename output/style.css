@@ -1,0 +1,12 @@
+.team-heading {
+    background : dimgrey;
+}
+
+.card-header{
+    background: dimgrey;
+}
+
+.employee-card{
+    margin: 1rem;
+    box-shadow: 5px 10px;
+}
