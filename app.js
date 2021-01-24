@@ -12,6 +12,12 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 var employeeArr = []
+const validateAnswer = async (input) => {
+    if (input === ""){
+        return "Please fill out this field"
+    }
+    return true
+}
 
 function employeeInfo() {
      inquirer
@@ -41,22 +47,26 @@ function managerInfo() {
             {
                 type: "input",
                 message: "Name of Manager",
-                name: "name"
+                name: "name",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "ID of Manager",
-                name: "id"
+                name: "id",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "Email of Manager",
-                name: "email"
+                name: "email",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "Office number?",
-                name: "officeNumber"
+                name: "officeNumber",
+                validate: validateAnswer
             },
             
         ])
@@ -75,22 +85,26 @@ function engineerInfo() {
             {
                 type: "input",
                 message: "Name of Engineer",
-                name: "name"
+                name: "name",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "ID of Engineer",
-                name: "id"
+                name: "id",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "Email of Engineer",
-                name: "email"
+                name: "email",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "Github username?",
-                name: "github"
+                name: "github",
+                validate: validateAnswer
             }
         ]).then(data =>{ var newEngineer = new Engineer(data.name, data.id, data.email, data.github);
             employeeArr.push(newEngineer);
@@ -106,22 +120,26 @@ function internInfo() {
              {
                 type: "input",
                 message: "Name of Intern",
-                name: "name"
+                name: "name",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "ID of Intern",
-                name: "id"
+                name: "id",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "Email of Intern",
-                name: "email"
+                name: "email",
+                validate: validateAnswer
             },
             {
                 type: "input",
                 message: "Intern School",
-                name: "school"
+                name: "school",
+                validate: validateAnswer
             }
         ]).then(data =>{ var newIntern = new Intern(data.name, data.id, data.email, data.school);
             employeeArr.push(newIntern);
